@@ -21,6 +21,8 @@ class PushNotifications {
       provisional: false,
       sound: true,
     );
+    // String? token = await _firebaseMessaging.getToken();
+    // print("for android device token: $token");
   }
 
   // get the fcm device token
@@ -56,13 +58,13 @@ class PushNotifications {
     bool isUserLoggedin = await AuthService.isLoggedIn();
     print("User is logged in $isUserLoggedin");
     if (isUserLoggedin) {
-      await CRUDService.saveUserToken(token!);
+      await CRUDService.saveUserToken(token);
       print("save to firestore");
     }
     // also save if token changes
     _firebaseMessaging.onTokenRefresh.listen((event) async {
       if (isUserLoggedin) {
-        await CRUDService.saveUserToken(token!);
+        await CRUDService.saveUserToken(token);
         print("save to firestore");
       }
     });

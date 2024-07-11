@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class AuthService {
+  static final _firebaseMessaging = FirebaseMessaging.instance;
   // creating a new account
   static Future<String> createAccountWithEmail(
       String email, String password) async {
@@ -31,6 +33,7 @@ class AuthService {
   // logout the user
   static Future logout() async {
     await FirebaseAuth.instance.signOut();
+    await _firebaseMessaging.deleteToken();
   }
 
   // check whether the user is sign in or not

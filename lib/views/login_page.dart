@@ -21,32 +21,32 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Login",
               style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               controller: emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   label: Text("Email"),
                   hintText: "Enter you email"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               obscureText: true,
               controller: passwordController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   label: Text("Password"),
                   hintText: "Enter you password"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -59,34 +59,34 @@ class _LoginPageState extends State<LoginPage> {
                         .then((value) {
                       if (value == "Login Successful") {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Login Successful")));
+                            const SnackBar(content: Text("Login Successful")));
                         Navigator.pushReplacementNamed(context, "/home");
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(
                             value,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                           backgroundColor: Colors.red.shade400,
                         ));
                       }
                     });
                   },
-                  child: Text("Login")),
+                  child: const Text("Login")),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("No account?"),
+                const Text("No account?"),
                 TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/signup");
                     },
-                    child: Text("Register")),
+                    child: const Text("Register")),
               ],
             ),
           ],
